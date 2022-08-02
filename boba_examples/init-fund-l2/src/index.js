@@ -30,7 +30,7 @@ const main = async () => {
   const messenger = new CrossChainMessenger({
     l1SignerOrProvider: L1Wallet,
     l2SignerOrProvider: L2Wallet,
-    l1ChainId: network.chainId,
+    l1ChainId: 4,
     fastRelayer: false,
   })
 
@@ -40,13 +40,20 @@ const main = async () => {
     L1Provider
   )
 
+  console.log("Proxy__L1CrossDomainMessengerAddress begin")
+
   const Proxy__L1CrossDomainMessengerAddress =
-    await Lib_AddressManager.getAddress('Proxy__L1CrossDomainMessenger')
+    await Lib_AddressManager.getAddress('Proxy__OVM_L1CrossDomainMessenger')
+
+  console.log("Proxy__L1CrossDomainMessengerAddress end")
+
   const L2CrossDomainMessengerAddress = await Lib_AddressManager.getAddress(
     'L2CrossDomainMessenger'
   )
+  console.log("L2CrossDomainMessenger end")
+
   const Proxy__L1StandardBridgeAddress = await Lib_AddressManager.getAddress(
-    'Proxy__L1StandardBridge'
+    'Proxy__OVM_L1StandardBridge'
   )
   console.log(
     `⭐️ ${chalk.blue('Proxy__L1CrossDomainMessenger address:')} ${chalk.green(
